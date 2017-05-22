@@ -1,0 +1,180 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>main</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:16px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">&#28388;&#27874;3</a></li><li><a href="#2">&#20027;&#31243;&#24207;&#65306;</a></li><li><a href="#3">1.&#35835;&#21462;&#24182;&#26174;&#31034;&#21407;&#22270;</a></li><li><a href="#4">2.&#27169;&#31946;&#22686;&#24378;</a></li><li><a href="#5">3.&#25552;&#21462;&#20809;&#29031;&#37096;&#20998;</a></li><li><a href="#6">4.&#25233;&#21046;&#22122;&#22768;</a></li><li><a href="#7">5.&#32467;&#26524;&#30456;&#20943;</a></li><li><a href="#8">6.&#20877;&#27425;&#22686;&#24378;</a></li><li><a href="#9">7.&#28784;&#24230;&#25289;&#20280;</a></li><li><a href="#10">&#20108;&#20540;&#21270;</a></li></ul></div><h2>&#28388;&#27874;3<a name="1"></a></h2><pre class="codeinput"><span class="comment">% &#20316;&#32773;&#65306;&#24352;&#32676;&#20255;	&#21335;&#26124;&#33322;&#31354;&#22823;&#23398;&#20449;&#24687;&#24037;&#31243;&#23398;&#38498;&#33258;&#21160;&#21270;&#31995;</span>
+<span class="comment">% &#26085;&#26399;&#65306;2017&#24180;5&#26376;10&#26085;</span>
+<span class="comment">%</span>
+<span class="comment">% 1.&#35774;&#35745;&#20869;&#23481;&#65306;</span>
+<span class="comment">%         &#23545;&#32473;&#23450;&#30340;&#22270;&#20687;LBimage3&#23545;&#22270;&#20687;&#36827;&#34892;&#28388;&#27874;&#65292;&#21435;&#38500;&#20809;&#29031;&#24433;&#21709;&#65292;&#20877;&#36827;&#34892;&#20108;&#20540;&#21270;&#22788;&#29702;&#65292;&#24471;&#21040;&#36739;&#23436;&#25972;&#30340;&#25968;&#23383;&#21644;&#31526;&#21495;&#12290;</span>
+<span class="comment">% 2.&#35774;&#35745;&#35201;&#27714;&#65306;</span>
+<span class="comment">%         &#65297;&#65289;&#21487;&#29992;&#65357;&#65345;&#65364;&#65356;&#65345;&#65346;&#25110;&#65334;&#65315;&#65291;&#65291;&#31561;&#35821;&#35328;&#32534;&#31243;&#65292;&#29992;&#65357;&#65345;&#65364;&#65356;&#65345;&#65346;&#32534;&#31243;&#26102;&#65292;&#35774;&#35745;&#20013;&#38500;&#20102;&#35835;&#20889;&#12289;&#26174;&#31034;&#12289;</span>
+<span class="comment">% &#25968;&#25454;&#31867;&#22411;&#36716;&#25442;&#31561;&#20989;&#25968;&#22806;&#20197;&#22806;&#65292;&#20854;&#23427;&#20027;&#35201;&#21151;&#33021;&#20989;&#25968;&#38656;&#33258;&#24049;&#32534;&#20889;&#12290;</span>
+<span class="comment">%         &#65298;&#65289;&#25152;&#26377;&#35774;&#35745;&#20869;&#23481;&#35201;&#22312;&#19968;&#20010;&#20027;&#31243;&#24207;&#20013;&#36816;&#34892;&#23454;&#29616;&#65292;&#20998;&#27493;&#39588;&#23454;&#29616;&#35774;&#35745;&#35201;&#27714;&#12290;</span>
+<span class="comment">%         &#65299;&#65289;&#35774;&#35745;&#25253;&#21578;&#20013;&#38656;&#35201;&#20998;&#26512;&#24433;&#21709;&#32467;&#26524;&#30340;&#22810;&#31181;&#22240;&#32032;&#12290;</span>
+</pre><h2>&#20027;&#31243;&#24207;&#65306;<a name="2"></a></h2><h2>1.&#35835;&#21462;&#24182;&#26174;&#31034;&#21407;&#22270;<a name="3"></a></h2><pre class="codeinput">X_src=imread(<span class="string">'LBimage3.bmp'</span>);
+imshow(X_src);title(<span class="string">'\fontsize{20}\color{red}&#21407;&#22270;'</span>);
+</pre><img vspace="5" hspace="5" src="main_01.png" alt=""> <h2>2.&#27169;&#31946;&#22686;&#24378;<a name="4"></a></h2><p>&#23545;&#22270;&#20687;&#36827;&#34892;&#20840;&#23616;&#27169;&#31946;&#22686;&#24378;</p><pre class="codeinput">X_fuzzy=myfuzzy(X_src);
+<span class="comment">% &#23545;&#25968;&#23383;&#8216;0&#8217;&#36827;&#34892;&#23616;&#37096;&#27169;&#31946;&#22686;&#24378;</span>
+X_fuzzy(:,1:170)=myfuzzy(X_fuzzy(:,1:170));
+imshow(X_fuzzy);title(<span class="string">'\fontsize{20}\color{red}&#27169;&#31946;&#22686;&#24378;'</span>);
+</pre><img vspace="5" hspace="5" src="main_02.png" alt=""> <h2>3.&#25552;&#21462;&#20809;&#29031;&#37096;&#20998;<a name="5"></a></h2><p>&#26368;&#23567;&#20540;&#28388;&#27874;</p><pre class="codeinput">X=double(X_fuzzy);     <span class="comment">% &#35745;&#31639;&#26102;&#38656;&#36716;&#20026;double&#22411;</span>
+X_min1=myfilter2(<span class="string">'Minimum'</span>,X,5);
+imshow(X_min1);title(<span class="string">'\fontsize{20}\color{red}&#25552;&#21462;&#20809;&#29031;&#37096;&#20998;(&#26368;&#23567;&#20540;&#28388;&#27874;)'</span>);
+</pre><img vspace="5" hspace="5" src="main_03.png" alt=""> <h2>4.&#25233;&#21046;&#22122;&#22768;<a name="6"></a></h2><p>&#23545;&#22270;&#20687;&#20840;&#23616;&#20351;&#29992;Prewitt&#31639;&#23376;&#21435;&#22122;</p><pre class="codeinput">X_prewitt=myfilter2(<span class="string">'Prewitt'</span>,X_min1);
+<span class="comment">% &#23545;&#25968;&#23383;&#8216;0&#8217;&#36827;&#34892;&#23616;&#37096;&#21435;&#22122;</span>
+X_prewitt(:,1:170)=myfilter2(<span class="string">'Prewitt'</span>,X_min1(:,1:170));
+imshow(X_prewitt);title(<span class="string">'\fontsize{20}\color{red}&#25233;&#21046;&#22122;&#22768;(Prewitt&#31639;&#23376;)'</span>);
+</pre><img vspace="5" hspace="5" src="main_04.png" alt=""> <h2>5.&#32467;&#26524;&#30456;&#20943;<a name="7"></a></h2><p>&#26080;&#20809;&#29031;&#22270;=&#27169;&#31946;&#22686;&#24378;&#22270;-&#20809;&#29031;&#22270;</p><pre class="codeinput">X_sub=X_fuzzy-uint8(X_prewitt);
+imshow(uint8(X_sub));title(<span class="string">'\fontsize{20}\color{red}&#32467;&#26524;&#30456;&#20943;&#65288;&#21435;&#38500;&#20809;&#29031;&#37096;&#20998;&#65289;'</span>);
+</pre><img vspace="5" hspace="5" src="main_05.png" alt=""> <h2>6.&#20877;&#27425;&#22686;&#24378;<a name="8"></a></h2><p>&#23545;&#25968;&#23383;&#8216;0&#8217;&#36827;&#34892;&#27169;&#31946;&#22686;&#24378;</p><pre class="codeinput">X_sub(:,1:170)=myfuzzy(X_sub(:,1:170));
+<span class="comment">% &#23545;&#25968;&#23383;&#8216;0&#8217;&#36827;&#34892;&#21435;&#22122;</span>
+X_sub(:,1:170)=myfilter2(<span class="string">'Medium'</span>,X_sub(:,1:170),3);
+imshow(uint8(X_sub));title(<span class="string">'\fontsize{20}\color{red}&#20877;&#27425;&#22686;&#24378;'</span>);
+</pre><img vspace="5" hspace="5" src="main_06.png" alt=""> <h2>7.&#28784;&#24230;&#25289;&#20280;<a name="9"></a></h2><p>&#23545;&#21435;&#38500;&#20809;&#29031;&#21518;&#30340;&#22270;&#20687;&#36827;&#34892;&#32447;&#24615;&#28784;&#24230;&#25289;&#20280;</p><pre class="codeinput">NX_sub=11*X_sub;
+imshow(uint8(NX_sub));title(<span class="string">'\fontsize{20}\color{red}&#28784;&#24230;&#25289;&#20280;'</span>);
+</pre><img vspace="5" hspace="5" src="main_07.png" alt=""> <h2>&#20108;&#20540;&#21270;<a name="10"></a></h2><p>&#23545;&#22270;&#20687;&#36827;&#34892;&#20998;&#27573;&#20108;&#20540;&#21270; &#23545;&#22270;&#20687;&#20998;&#20004;&#27573;&#36827;&#34892;&#19981;&#21516;&#38408;&#20540;&#30340;&#20108;&#20540;&#21270; &#23545;&#25968;&#23383;&#8216;0&#8217;&#36827;&#34892;&#20108;&#20540;&#21270;</p><pre class="codeinput">BW_left=myim2bw(NX_sub(:,1:170),0.99);
+<span class="comment">% &#23545;&#25968;&#23383;&#8216;0&#8217;&#21491;&#36793;&#36827;&#34892;&#20108;&#20540;&#21270;</span>
+BW_right=myim2bw(NX_sub(:,170:size(X,2)),0.6);
+<span class="comment">% &#21512;&#25104;&#25972;&#24133;&#22270;&#20687;</span>
+BW=[BW_left BW_right];
+imshow(BW);title(<span class="string">'\fontsize{20}\color{red}&#20108;&#20540;&#21270;'</span>);
+<span class="comment">% &#26174;&#31034;&#21407;&#22270;&#65292;&#27604;&#36739;&#22788;&#29702;&#25928;&#26524;</span>
+imshow(X_src);title(<span class="string">'\fontsize{20}\color{red}&#21407;&#22270;'</span>);
+</pre><img vspace="5" hspace="5" src="main_08.png" alt=""> </div><!--
+##### SOURCE BEGIN #####
+%%                                             滤波3
+
+% 作者：张群伟	南昌航空大学信息工程学院自动化系
+% 日期：2017年5月10日
+%
+% 1.设计内容：
+%         对给定的图像LBimage3对图像进行滤波，去除光照影响，再进行二值化处理，得到较完整的数字和符号。
+% 2.设计要求：
+%         １）可用ｍａｔｌａｂ或ＶＣ＋＋等语言编程，用ｍａｔｌａｂ编程时，设计中除了读写、显示、
+% 数据类型转换等函数外以外，其它主要功能函数需自己编写。
+%         ２）所有设计内容要在一个主程序中运行实现，分步骤实现设计要求。
+%         ３）设计报告中需要分析影响结果的多种因素。
+
+%% 主程序：
+
+%% 1.读取并显示原图
+X_src=imread('LBimage3.bmp');
+imshow(X_src);title('\fontsize{20}\color{red}原图');
+%% 2.模糊增强
+% 对图像进行全局模糊增强
+X_fuzzy=myfuzzy(X_src);
+% 对数字‘0’进行局部模糊增强
+X_fuzzy(:,1:170)=myfuzzy(X_fuzzy(:,1:170));
+imshow(X_fuzzy);title('\fontsize{20}\color{red}模糊增强');
+
+%% 3.提取光照部分
+% 最小值滤波
+X=double(X_fuzzy);     % 计算时需转为double型
+X_min1=myfilter2('Minimum',X,5);        
+imshow(X_min1);title('\fontsize{20}\color{red}提取光照部分(最小值滤波)');
+
+%% 4.抑制噪声
+% 对图像全局使用Prewitt算子去噪
+X_prewitt=myfilter2('Prewitt',X_min1);
+% 对数字‘0’进行局部去噪
+X_prewitt(:,1:170)=myfilter2('Prewitt',X_min1(:,1:170));
+imshow(X_prewitt);title('\fontsize{20}\color{red}抑制噪声(Prewitt算子)');
+
+
+%% 5.结果相减
+% 无光照图=模糊增强图-光照图
+X_sub=X_fuzzy-uint8(X_prewitt);
+imshow(uint8(X_sub));title('\fontsize{20}\color{red}结果相减（去除光照部分）');
+%% 6.再次增强
+% 对数字‘0’进行模糊增强
+X_sub(:,1:170)=myfuzzy(X_sub(:,1:170));
+% 对数字‘0’进行去噪
+X_sub(:,1:170)=myfilter2('Medium',X_sub(:,1:170),3);
+imshow(uint8(X_sub));title('\fontsize{20}\color{red}再次增强');
+
+%% 7.灰度拉伸
+% 对去除光照后的图像进行线性灰度拉伸
+NX_sub=11*X_sub;
+imshow(uint8(NX_sub));title('\fontsize{20}\color{red}灰度拉伸');
+
+%% 二值化
+% 对图像进行分段二值化
+% 对图像分两段进行不同阈值的二值化
+% 对数字‘0’进行二值化
+BW_left=myim2bw(NX_sub(:,1:170),0.99);
+% 对数字‘0’右边进行二值化
+BW_right=myim2bw(NX_sub(:,170:size(X,2)),0.6);
+% 合成整幅图像
+BW=[BW_left BW_right];
+imshow(BW);title('\fontsize{20}\color{red}二值化');
+% 显示原图，比较处理效果
+imshow(X_src);title('\fontsize{20}\color{red}原图');
+
+
+##### SOURCE END #####
+--></body></html>

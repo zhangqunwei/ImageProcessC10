@@ -1,0 +1,392 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>&#20108;&#32500;&#32447;&#24615;&#25968;&#23383;&#28388;&#27874;&#22120;</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="myfilter2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:16px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>&#20108;&#32500;&#32447;&#24615;&#25968;&#23383;&#28388;&#27874;&#22120;</h1><!--introduction--><div><ul><li>&#27010;&#36848;      &#65306;&#20108;&#32500;&#32447;&#24615;&#25968;&#23383;&#28388;&#27874;&#22120;</li><li>&#20316;&#32773;		&#65306;&#24352;&#32676;&#20255;	&#21335;&#26124;&#33322;&#31354;&#22823;&#23398;&#20449;&#24687;&#24037;&#31243;&#23398;&#38498;&#33258;&#21160;&#21270;&#31995;</li><li>&#26085;&#26399;		&#65306;[10/5/2017]</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">&#35821;&#27861;:</a></li><li><a href="#2">&#20030;&#20363;:</a></li><li><a href="#3">&#20027;&#20989;&#25968;</a></li><li><a href="#4">Average</a></li><li><a href="#5">Minimum</a></li><li><a href="#6">Medium</a></li><li><a href="#7">Maximum</a></li><li><a href="#8">Laplace</a></li><li><a href="#9">Sobel_Prewitt</a></li></ul></div><h2>&#35821;&#27861;:<a name="1"></a></h2><pre class="codeinput"><span class="comment">%---------------------------------------</span>
+<span class="comment">%   Y=MYFILTER2(type,X,N)</span>
+<span class="comment">%   &#29992;type&#25351;&#23450;&#30340;FIR&#28388;&#27874;&#22120;(N*N&#30340;&#27169;&#26495;)&#23545;&#25968;&#25454;X&#36827;&#34892;&#28388;&#27874;&#65292;&#28388;&#27874;&#21518;&#32467;&#26524;&#20026;Y.</span>
+<span class="comment">%---------------------------------------</span>
+<span class="comment">%   N       &#25351;&#23450;FIR&#28388;&#27874;&#22120;&#20351;&#29992;N*N&#30340;&#27169;&#26495;&#36827;&#34892;&#35745;&#31639;</span>
+<span class="comment">%   type</span>
+<span class="comment">%       'Average'   &#22343;&#20540;&#28388;&#27874;&#22120;</span>
+<span class="comment">%       'Minimum'   &#26368;&#23567;&#20540;&#28388;&#27874;&#22120;</span>
+<span class="comment">%       'Medium'    &#20013;&#20540;&#28388;&#27874;&#22120;</span>
+<span class="comment">%       'Maximum'   &#26368;&#22823;&#20540;&#28388;&#27874;&#22120;</span>
+<span class="comment">%       'Laplace'   &#25289;&#26222;&#25289;&#26031;&#31639;&#23376;&#38160;&#21270;</span>
+<span class="comment">%       'Sobel'     sobel&#31639;&#23376;</span>
+<span class="comment">%       'Prewitt'   prewitt&#31639;&#23376;</span>
+</pre><h2>&#20030;&#20363;:<a name="2"></a></h2><pre class="codeinput"><span class="comment">%---------------------------------------</span>
+<span class="comment">%     clear</span>
+<span class="comment">%     clc</span>
+<span class="comment">%     %% &#35835;&#20837;&#24182;&#26174;&#31034;&#21407;&#22270;</span>
+<span class="comment">%     figure('name','&#21407;&#22270;','NumberTitle','off');</span>
+<span class="comment">%     I=imread('cameraman.tif');</span>
+<span class="comment">%     imshow(I);</span>
+<span class="comment">%     %% &#28155;&#21152;&#39640;&#26031;&#22122;&#22768;</span>
+<span class="comment">%     J=imnoise(I,'gaussian',0,0.02);</span>
+<span class="comment">%     %% MY&#22343;&#20540;&#28388;&#27874;</span>
+<span class="comment">%     figure('name','MY&#22343;&#20540;&#28388;&#27874;','NumberTitle','off');</span>
+<span class="comment">%     J1=myfilter2('average',J,3);</span>
+<span class="comment">%     imshow(J1);</span>
+<span class="comment">%</span>
+</pre><h2>&#20027;&#20989;&#25968;<a name="3"></a></h2><p><b>&#20108;&#32500;&#32447;&#24615;&#25968;&#23383;&#28388;&#27874;&#22120;</b></p><pre class="codeinput"><span class="keyword">function</span> Y=myfilter2(type,X,N,varargin)
+<span class="comment">%&#20108;&#32500;&#32447;&#24615;&#25968;&#23383;&#28388;&#27874;&#22120;.</span>
+    X=double(X);
+    <span class="keyword">switch</span> type
+        <span class="keyword">case</span> <span class="string">'Average'</span>
+            Y=Average(N,X);
+        <span class="keyword">case</span> <span class="string">'Minimum'</span>
+            Y=Minimum(N,X);
+        <span class="keyword">case</span> <span class="string">'Medium'</span>
+            Y=Medium(N,X);
+        <span class="keyword">case</span> <span class="string">'Maximum'</span>
+            Y=Maximum(N,X);
+        <span class="keyword">case</span> <span class="string">'Laplace'</span>
+            Y=Laplace(N,X);
+        <span class="keyword">case</span> <span class="string">'Sobel'</span>
+            <span class="comment">% &#35774;&#32622;&#31639;&#23376;</span>
+            plateX=[-1 -2 -1;0 0 0;1 2 1];
+            plateY=[-1 0  1;-2 0 2;-1 0 1];
+            Y=Sobel_Prewitt(plateX,plateY,X);
+        <span class="keyword">case</span> <span class="string">'Prewitt'</span>
+            <span class="comment">% &#35774;&#32622;&#31639;&#23376;</span>
+            plateX=[1 0 -1;1 0 -1;1 0 -1];
+            plateY=[1 1  1;0 0 0;-1 -1 -1];
+            Y=Sobel_Prewitt(plateX,plateY,X);
+        <span class="keyword">otherwise</span>
+            Y=X;
+    <span class="keyword">end</span> <span class="comment">% /!switch</span>
+<span class="keyword">end</span>
+</pre><h2>Average<a name="4"></a></h2><p>&#39046;&#22495;&#24179;&#22343;&#28388;&#27874;&#22120;&#65288;&#32447;&#24615;&#24179;&#28369;&#28388;&#27874;&#22120;&#65289;&#65292;&#27169;&#29256;&#20026;NxN</p><pre class="codeinput"><span class="keyword">function</span> I=Average(N,X)
+    [height,width]=size(X);     <span class="comment">% &#26816;&#32034;&#22270;&#20687;&#22823;&#23567;</span>
+    dX=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    <span class="keyword">for</span> i=1:height-N+1
+        <span class="keyword">for</span> j=1:width-N+1
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=sum(sum( X(i:i+(N-1),j:j+(N-1)) ))/(N*N);
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    I=uint8(dX);
+<span class="keyword">end</span>
+</pre><h2>Minimum<a name="5"></a></h2><p>&#26368;&#23567;&#20540;&#28388;&#27874;&#22120;&#65292;&#27169;&#29256;&#20026;NxN</p><pre class="codeinput"><span class="keyword">function</span> I=Minimum(N,X)
+    [height,width]=size(X);     <span class="comment">% &#26816;&#32034;&#22270;&#20687;&#22823;&#23567;</span>
+    dX=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    <span class="keyword">for</span> i=1:height-N+1
+        <span class="keyword">for</span> j=1:width-N+1
+            temp=X(i:i+(N-1),j:j+(N-1));    <span class="comment">% &#21462;&#20986;&#22270;&#20687;&#20013;&#19982;&#27169;&#29256;&#23545;&#24212;&#30340;&#25968;&#25454;</span>
+            s=temp(:);                      <span class="comment">% &#23558;&#30697;&#38453;&#36716;&#21464;&#20026;&#19968;&#20010;&#30690;&#37327;</span>
+            Min=min(s);                     <span class="comment">% &#35745;&#31639;&#30690;&#37327;&#30340;&#26368;&#23567;&#20540;</span>
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=Min;<span class="comment">% &#23558;&#26368;&#23567;&#20540;&#20889;&#20837;&#20013;&#24515;&#20301;&#32622;</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    I=uint8(dX);
+<span class="keyword">end</span>
+</pre><h2>Medium<a name="6"></a></h2><p>&#20013;&#20540;&#28388;&#27874;&#22120;&#65292;&#27169;&#29256;&#20026;NxN</p><pre class="codeinput"><span class="keyword">function</span> I=Medium(N,X)
+    [height,width]=size(X);     <span class="comment">% &#26816;&#32034;&#22270;&#20687;&#22823;&#23567;</span>
+    dX=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    <span class="keyword">for</span> i=1:height-N+1
+        <span class="keyword">for</span> j=1:width-N+1
+            temp=X(i:i+(N-1),j:j+(N-1));    <span class="comment">% &#21462;&#20986;&#22270;&#20687;&#20013;&#19982;&#27169;&#29256;&#23545;&#24212;&#30340;&#25968;&#25454;</span>
+            s=temp(:);                      <span class="comment">% &#23558;&#30697;&#38453;&#36716;&#21464;&#20026;&#19968;&#20010;&#30690;&#37327;</span>
+            Med=median(s);                  <span class="comment">% &#35745;&#31639;&#30690;&#37327;&#30340;&#20013;&#20540;</span>
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=Med;<span class="comment">% &#23558;&#20013;&#20540;&#20889;&#20837;&#20013;&#24515;&#20301;&#32622;</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    I=uint8(dX);
+<span class="keyword">end</span>
+</pre><h2>Maximum<a name="7"></a></h2><p>&#26368;&#22823;&#20540;&#28388;&#27874;&#22120;&#65292;&#27169;&#29256;&#20026;NxN</p><pre class="codeinput"><span class="keyword">function</span> I=Maximum(N,X)
+    [height,width]=size(X);     <span class="comment">% &#26816;&#32034;&#22270;&#20687;&#22823;&#23567;</span>
+    dX=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    <span class="keyword">for</span> i=1:height-N+1
+        <span class="keyword">for</span> j=1:width-N+1
+            temp=X(i:i+(N-1),j:j+(N-1));            <span class="comment">% &#21462;&#20986;&#22270;&#20687;&#20013;&#19982;&#27169;&#29256;&#23545;&#24212;&#30340;&#25968;&#25454;</span>
+            s=temp(:);                              <span class="comment">% &#23558;&#30697;&#38453;&#36716;&#21464;&#20026;&#19968;&#20010;&#30690;&#37327;</span>
+            Max=max(s);                             <span class="comment">% &#35745;&#31639;&#30690;&#37327;&#30340;&#26368;&#22823;&#20540;</span>
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=Max;        <span class="comment">% &#23558;&#26368;&#22823;&#20540;&#20889;&#20837;&#20013;&#24515;&#20301;&#32622;</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    I=uint8(dX);
+<span class="keyword">end</span>
+</pre><h2>Laplace<a name="8"></a></h2><p>&#25289;&#26222;&#25289;&#26031;&#31639;&#23376;</p><pre class="codeinput"><span class="keyword">function</span> I=Laplace(plate,X)
+    [height,width]=size(X);     <span class="comment">% &#26816;&#32034;&#22270;&#20687;&#22823;&#23567;</span>
+    N=size(plate,1);            <span class="comment">% &#26816;&#32034;&#27169;&#26495;&#22823;&#23567;</span>
+    dX=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    <span class="keyword">for</span> i=1:height-2
+        <span class="keyword">for</span> j=1:width-2
+            <span class="comment">% &#27169;&#26495;&#21367;&#31215;&#36816;&#31639;</span>
+            temp=plate.*X(i:i+(N-1),j:j+(N-1)); <span class="comment">% &#27169;&#26495;&#19982;&#22270;&#20687;&#25968;&#25454;&#28857;&#20056;</span>
+            temp=sum(sum(temp));                <span class="comment">% &#27714;&#21644;</span>
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=temp;   <span class="comment">% &#20889;&#20837;&#22270;&#20687;</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    I=uint8(dX);
+<span class="keyword">end</span>
+</pre><h2>Sobel_Prewitt<a name="9"></a></h2><p>Sobel_Prewitt&#31639;&#23376;</p><pre class="codeinput"><span class="keyword">function</span> I=Sobel_Prewitt(plateX,plateY,X)
+    [height,width]=size(X);     <span class="comment">% &#26816;&#32034;&#22270;&#20687;&#22823;&#23567;</span>
+<span class="comment">% &#35745;&#31639;dX,dY</span>
+    dX=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    dY=double(X);               <span class="comment">% &#20445;&#23384;&#35745;&#31639;&#21518;&#30340;&#22270;&#20687;&#65288;double&#31867;&#22411;&#65289;</span>
+    <span class="keyword">for</span> i=1:height-2
+        <span class="keyword">for</span> j=1:width-2
+            <span class="comment">% X&#26041;&#21521;&#20351;&#29992;&#27169;&#26495;</span>
+            tempX=plateX.*X(i:i+2,j:j+2);           <span class="comment">% &#27169;&#26495;&#19982;&#22270;&#20687;&#25968;&#25454;&#28857;&#20056;</span>
+            tempX=sum(sum(tempX));                  <span class="comment">% &#27714;&#21644;</span>
+            dX(i:i+1,j:j+1)=tempX.^2;               <span class="comment">% &#24179;&#26041;&#24182;&#20889;&#20837;&#22270;&#20687;</span>
+            <span class="comment">% Y&#26041;&#21521;&#20351;&#29992;&#27169;&#26495;</span>
+            tempY=plateY.*X(i:i+2,j:j+2);           <span class="comment">% &#27169;&#26495;&#19982;&#22270;&#20687;&#25968;&#25454;&#28857;&#20056;</span>
+            tempY=sum(sum(tempY));                  <span class="comment">% &#27714;&#21644;</span>
+            dY(i:i+1,j:j+1)=tempY.^2;               <span class="comment">% &#24179;&#26041;&#24182;&#20889;&#20837;&#22270;&#20687;</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="comment">% &#35745;&#31639;S</span>
+    S=sqrt(dX+dY);
+<span class="comment">% &#21152;&#19978;&#21407;&#22270;</span>
+    I=uint8(X+S);
+<span class="keyword">end</span>
+</pre></div><!--
+##### SOURCE BEGIN #####
+%% 二维线性数字滤波器
+% * 概述      ：二维线性数字滤波器
+% * 作者		：张群伟	南昌航空大学信息工程学院自动化系
+% * 日期		：[10/5/2017]  
+%%
+
+
+%% 语法:
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%   Y=MYFILTER2(type,X,N)
+%   用type指定的FIR滤波器(N*N的模板)对数据X进行滤波，滤波后结果为Y.
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%   N       指定FIR滤波器使用N*N的模板进行计算
+%   type 
+%       'Average'   均值滤波器
+%       'Minimum'   最小值滤波器
+%       'Medium'    中值滤波器
+%       'Maximum'   最大值滤波器
+%       'Laplace'   拉普拉斯算子锐化
+%       'Sobel'     sobel算子
+%       'Prewitt'   prewitt算子
+
+%% 举例:
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%     clear
+%     clc
+%     %% 读入并显示原图
+%     figure('name','原图','NumberTitle','off');
+%     I=imread('cameraman.tif');
+%     imshow(I);
+%     %% 添加高斯噪声
+%     J=imnoise(I,'gaussian',0,0.02);
+%     %% MY均值滤波
+%     figure('name','MY均值滤波','NumberTitle','off');
+%     J1=myfilter2('average',J,3);
+%     imshow(J1);
+%
+
+
+%% 主函数
+% *二维线性数字滤波器*
+function Y=myfilter2(type,X,N,varargin)
+%二维线性数字滤波器. 
+    X=double(X);
+    switch type
+        case 'Average'
+            Y=Average(N,X);
+        case 'Minimum'
+            Y=Minimum(N,X);
+        case 'Medium'
+            Y=Medium(N,X);
+        case 'Maximum'
+            Y=Maximum(N,X);
+        case 'Laplace'
+            Y=Laplace(N,X);
+        case 'Sobel'
+            % 设置算子
+            plateX=[-1 -2 -1;0 0 0;1 2 1];
+            plateY=[-1 0  1;-2 0 2;-1 0 1];
+            Y=Sobel_Prewitt(plateX,plateY,X);
+        case 'Prewitt'
+            % 设置算子
+            plateX=[1 0 -1;1 0 -1;1 0 -1];
+            plateY=[1 1  1;0 0 0;-1 -1 -1];
+            Y=Sobel_Prewitt(plateX,plateY,X);
+        otherwise
+            Y=X;
+    end % /!switch 
+end 
+
+
+%% Average
+% 领域平均滤波器（线性平滑滤波器），模版为NxN
+function I=Average(N,X)
+    [height,width]=size(X);     % 检索图像大小
+    dX=double(X);               % 保存计算后的图像（double类型）
+    for i=1:height-N+1
+        for j=1:width-N+1
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=sum(sum( X(i:i+(N-1),j:j+(N-1)) ))/(N*N);
+        end
+    end
+    I=uint8(dX);
+end 
+
+
+%% Minimum
+% 最小值滤波器，模版为NxN
+function I=Minimum(N,X)
+    [height,width]=size(X);     % 检索图像大小
+    dX=double(X);               % 保存计算后的图像（double类型）
+    for i=1:height-N+1
+        for j=1:width-N+1
+            temp=X(i:i+(N-1),j:j+(N-1));    % 取出图像中与模版对应的数据
+            s=temp(:);                      % 将矩阵转变为一个矢量
+            Min=min(s);                     % 计算矢量的最小值
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=Min;% 将最小值写入中心位置
+        end
+    end
+    I=uint8(dX);
+end              
+ 
+
+%% Medium
+% 中值滤波器，模版为NxN
+function I=Medium(N,X)
+    [height,width]=size(X);     % 检索图像大小
+    dX=double(X);               % 保存计算后的图像（double类型）
+    for i=1:height-N+1
+        for j=1:width-N+1
+            temp=X(i:i+(N-1),j:j+(N-1));    % 取出图像中与模版对应的数据
+            s=temp(:);                      % 将矩阵转变为一个矢量
+            Med=median(s);                  % 计算矢量的中值
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=Med;% 将中值写入中心位置
+        end
+    end
+    I=uint8(dX);
+end             
+
+
+%% Maximum
+% 最大值滤波器，模版为NxN
+function I=Maximum(N,X)
+    [height,width]=size(X);     % 检索图像大小
+    dX=double(X);               % 保存计算后的图像（double类型）
+    for i=1:height-N+1
+        for j=1:width-N+1
+            temp=X(i:i+(N-1),j:j+(N-1));            % 取出图像中与模版对应的数据
+            s=temp(:);                              % 将矩阵转变为一个矢量
+            Max=max(s);                             % 计算矢量的最大值
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=Max;        % 将最大值写入中心位置
+        end
+    end
+    I=uint8(dX);
+end 
+            
+         
+%% Laplace
+% 拉普拉斯算子
+function I=Laplace(plate,X)
+    [height,width]=size(X);     % 检索图像大小
+    N=size(plate,1);            % 检索模板大小
+    dX=double(X);               % 保存计算后的图像（double类型）
+    for i=1:height-2
+        for j=1:width-2
+            % 模板卷积运算
+            temp=plate.*X(i:i+(N-1),j:j+(N-1)); % 模板与图像数据点乘
+            temp=sum(sum(temp));                % 求和
+            dX(i:i+(N-1)/2,j:j+(N-1)/2)=temp;   % 写入图像
+        end
+    end
+    I=uint8(dX);
+end            
+      
+
+%% Sobel_Prewitt
+% Sobel_Prewitt算子
+function I=Sobel_Prewitt(plateX,plateY,X)
+    [height,width]=size(X);     % 检索图像大小
+% 计算dX,dY
+    dX=double(X);               % 保存计算后的图像（double类型）
+    dY=double(X);               % 保存计算后的图像（double类型）    
+    for i=1:height-2
+        for j=1:width-2
+            % X方向使用模板
+            tempX=plateX.*X(i:i+2,j:j+2);           % 模板与图像数据点乘
+            tempX=sum(sum(tempX));                  % 求和
+            dX(i:i+1,j:j+1)=tempX.^2;               % 平方并写入图像
+            % Y方向使用模板
+            tempY=plateY.*X(i:i+2,j:j+2);           % 模板与图像数据点乘
+            tempY=sum(sum(tempY));                  % 求和
+            dY(i:i+1,j:j+1)=tempY.^2;               % 平方并写入图像
+        end
+    end
+% 计算S
+    S=sqrt(dX+dY);
+% 加上原图
+    I=uint8(X+S);
+end            
+   
+            
+##### SOURCE END #####
+--></body></html>
