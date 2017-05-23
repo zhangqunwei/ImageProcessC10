@@ -1,7 +1,7 @@
-<div>
+<div style="color:#00FF00">
    <a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>网络安装包</a>
                    <a href="https://zhangqunwei.github.io/ImageProcessC10/main/main.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>本地主程序</a>
-</div style="color:#00FF00">
+</div >
 ## 考试题：C10 滤波3
    对给定的图像LBimage3进行滤波，去除光照影响， 再进行二值化处理，得到较完整的数字和符号。
 
