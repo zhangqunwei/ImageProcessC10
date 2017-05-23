@@ -1,5 +1,5 @@
 <section id="downloads">   
-<div background:#ffffff>
+<div background:#ffffff;>
    <section id="downloads">
    <a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>网络安装包</a>
                    <a href="https://zhangqunwei.github.io/ImageProcessC10/main/main.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>本地主程序</a>
@@ -21,8 +21,6 @@
 <div><h2 style="text-align: center;">模糊增强版</h2></div>
 
 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/Fuzzy/main.html)
-
-
 
 ```Matlab
 %%                       滤波3
@@ -94,12 +92,9 @@
   imshow(X_src);title('\fontsize{20}\color{red}原图');
 ```
 
-
-<div><h3>实时编辑器版</h3></div> 
+<div><h2 style="text-align: center;">实时编辑器版</h2></div>
 
 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/RealTime/main.html)
-
-
 
 ```Matlab
 %%                        滤波3
