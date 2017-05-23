@@ -7,12 +7,12 @@
 <p><img src="https://zhangqunwei.github.io/ImageProcessC10/html/GUI/main.bmp" alt="UI界面" /></p>
 <header>
 
-## GUI界面版
+### GUI界面版
 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/GUI/KaoShiTi.html)
 
 ![UI界面](https://zhangqunwei.github.io/ImageProcessC10/html/GUI/main.bmp)
 
-## 模糊增强版
+### 模糊增强版
 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/Fuzzy/main.html)
 
 ```Matlab
@@ -85,7 +85,7 @@
   imshow(X_src);title('\fontsize{20}\color{red}原图');
 ```
 
-## 实时编辑器版
+### 实时编辑器版
 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/RealTime/main.html)
 
 ```Matlab
