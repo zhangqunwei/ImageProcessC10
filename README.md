@@ -1,3 +1,12 @@
+<header>
+      <div class="container">
+        <section id="downloads">   
+          <a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" class="btn btn-github"><span class="icon"></span>网络安装包</a>
+        </section>
+      </div>
+    </header>
+
+
 ## 考试题：C10 滤波3
 对给定的图像LBimage3进行滤波，去除光照影响， 再进行二值化处理，得到较完整的数字和符号。
 ![LBimage3](https://zhangqunwei.github.io/ImageProcessC10/html/GUI/LBimage3.bmp)
