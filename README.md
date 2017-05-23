@@ -2,10 +2,10 @@
    <a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>网络安装包</a>
                    <a href="https://zhangqunwei.github.io/ImageProcessC10/main/main.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>本地主程序</a>
 </header>
-<header><div><h2 style="text-align: center;"><span style="color:#ff0000;">考试题：C10 滤波3</span></h2>
+<header><h2 style="text-align: center;"><span style="color:#ff0000;">考试题：C10 滤波3</span></h2>
    对给定的图像LBimage3进行滤波，去除光照影响， 再进行二值化处理，得到较完整的数字和符号。
 <p><img src="https://zhangqunwei.github.io/ImageProcessC10/html/GUI/main.bmp" alt="UI界面" /></p>
-</div><header>
+<header>
 
 ## GUI界面版
 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/GUI/KaoShiTi.html)
