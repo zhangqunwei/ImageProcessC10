@@ -14,8 +14,9 @@
 
 ### 模糊增强版 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/Fuzzy/main.html)
 
+
 ```Matlab
-%%                                             滤波3
+%%                       滤波3
 
 % 作者：张群伟	南昌航空大学信息工程学院自动化系
 % 日期：2017年5月10日
@@ -84,9 +85,10 @@
   imshow(X_src);title('\fontsize{20}\color{red}原图');
 ```
 
+
 ### 实时编辑器版 [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/RealTime/main.html)
 ```Matlab
-%%                                       滤波3
+%%                        滤波3
 
 % 作者：张群伟	南昌航空大学信息工程学院自动化系
 % 日期：2017年5月10日
