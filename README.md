@@ -1,8 +1,8 @@
 <style>
    h1{color:#ff0000;}
    #d{color:#fff000};
-   #install{ float:right;width:100px;}
-   #main{float:left;width:100px;}
+   #install{ float:right;width:200px;}
+   #main{float:left;width:200px;}
 </style>
 <div id="d">
    <div id="install"><a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>网络安装包</a></div>
