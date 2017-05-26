@@ -19,8 +19,8 @@
 ## 模糊增强版 
  [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/Fuzzy/main.html)
  
- 
-{% highlight Matlab %}  
+ <p style="">
+{% highlight Matlab %}  
  %%                       滤波3
  
  % 作者：张群伟	南昌航空大学信息工程学院自动化系
@@ -89,10 +89,11 @@
  % 显示原图，比较处理效果
    imshow(X_src);title('\fontsize{20}\color{red}原图');
 {% endhighlight %}  
- 
+ </p>
  
 ## 实时编辑器版 
  [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/RealTime/main.html)
+<p style="">
 {% highlight Matlab %}  
  %%                        滤波3
  
@@ -154,3 +155,4 @@
  % 显示原图，比较处理效果
    imshow(X_src);title('\fontsize{20}\color{red}原图');
 {% endhighlight %}  
+</p>
