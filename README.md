@@ -19,7 +19,7 @@
 ## 模糊增强版 
  [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/Fuzzy/main.html)
  
- <div style="">
+
 {% highlight Matlab %}  
  %%                       滤波3
  
@@ -89,11 +89,10 @@
  % 显示原图，比较处理效果
    imshow(X_src);title('\fontsize{20}\color{red}原图');
 {% endhighlight %}  
- </div>
  
 ## 实时编辑器版 
  [查看源码](https://zhangqunwei.github.io/ImageProcessC10/html/RealTime/main.html)
-<div style="">
+
 {% highlight Matlab %}  
  %%                        滤波3
  
@@ -155,4 +154,3 @@
  % 显示原图，比较处理效果
    imshow(X_src);title('\fontsize{20}\color{red}原图');
 {% endhighlight %}  
-</div>
