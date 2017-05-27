@@ -1,6 +1,7 @@
 <style>
    h1{color:#ff0000;text-align: center;}
    h2{text-align: center;}
+   html body { margin:5%;｝
 </style>
 <div>
 <a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>网络安装包</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
