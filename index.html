@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="stylesheet" href="/ImageProcessC10/assets/css/style.css?v=268e892460fcfcbe56954cd5cc33c5a5e04409e5">
+    <title>ImageProcessC10 by zhangqunwei</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>ImageProcessC10</h1>
+        <h2>《图像处理》课程考试题 C10滤波3</h2>
+
+        <section id="downloads">
+          
+          <a href="https://github.com/zhangqunwei/ImageProcessC10" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <style>
+   h1{color:#ff0000;text-align: center;}
+   h2{text-align: center;}
+   html body { margin:5%;｝
+</style>
+
+<div>
+<a href="https://zhangqunwei.github.io/ImageProcessC10/install/InstallerWeb.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>网络安装包</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <a href="https://zhangqunwei.github.io/ImageProcessC10/main/main.zip" title="PC机中需要预先安装Matlab" class="btn btn-github"><span class="icon"></span>本地主程序</a>
+</div>
+
+<h1 id="考试题c10-滤波3">考试题：C10 滤波3</h1>
+<p>对给定的图像LBimage3进行滤波，去除光照影响， 再进行二值化处理，得到较完整的数字和符号。</p>
+
+<h2 id="相关子函数">相关子函数</h2>
+<p><a href="https://zhangqunwei.github.io/ImageProcessC10/html/function/myfilter2.html">myfilter2()</a>
+   <a href="https://zhangqunwei.github.io/ImageProcessC10/html/function/myfuzzy.html">myfuzzy()</a>
+   <a href="https://zhangqunwei.github.io/ImageProcessC10/html/function/myim2bw.html">myim2bw()</a></p>
+
+<h2 id="gui界面版">GUI界面版</h2>
+<p><a href="https://zhangqunwei.github.io/ImageProcessC10/html/GUI/KaoShiTi.html">查看源码</a></p>
+
+<p><img src="https://zhangqunwei.github.io/ImageProcessC10/html/GUI/main.bmp" alt="UI界面" /></p>
+
+<h2 id="模糊增强版">模糊增强版</h2>
+<p><a href="https://zhangqunwei.github.io/ImageProcessC10/html/Fuzzy/main.html">查看源码</a></p>
+
+<figure class="highlight"><pre><code class="language-matlab" data-lang="matlab"> <span class="err"> </span>
+ <span class="c1">%%                       滤波3</span>
+ 
+ <span class="c1">% 作者：张群伟	南昌航空大学信息工程学院自动化系</span>
+ <span class="c1">% 日期：2017年5月10日</span>
+ <span class="c1">%</span>
+ <span class="c1">% 1.设计内容：</span>
+ <span class="c1">%         对给定的图像LBimage3对图像进行滤波，去除光照影响，再进行二值化处理，得到较完整的数字和符号。</span>
+ <span class="c1">% 2.设计要求：</span>
+ <span class="c1">%         １）可用ｍａｔｌａｂ或ＶＣ＋＋等语言编程，用ｍａｔｌａｂ编程时，设计中除了读写、显示、</span>
+ <span class="c1">% 数据类型转换等函数外以外，其它主要功能函数需自己编写。</span>
+ <span class="c1">%         ２）所有设计内容要在一个主程序中运行实现，分步骤实现设计要求。</span>
+ <span class="c1">%         ３）设计报告中需要分析影响结果的多种因素。</span>
+ 
+ <span class="c1">%% 主程序：</span>
+ 
+ <span class="c1">%% 1.读取并显示原图</span>
+   <span class="n">X_src</span><span class="o">=</span><span class="nb">imread</span><span class="p">(</span><span class="s1">'LBimage3.bmp'</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_src</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}原图'</span><span class="p">);</span>
+ <span class="c1">%% 2.模糊增强</span>
+ <span class="c1">% 对图像进行全局模糊增强</span>
+   <span class="n">X_fuzzy</span><span class="o">=</span><span class="n">myfuzzy</span><span class="p">(</span><span class="n">X_src</span><span class="p">);</span>
+ <span class="c1">% 对数字‘0’进行局部模糊增强</span>
+   <span class="n">X_fuzzy</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">)</span><span class="o">=</span><span class="n">myfuzzy</span><span class="p">(</span><span class="n">X_fuzzy</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">));</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_fuzzy</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}模糊增强'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 3.提取光照部分</span>
+ <span class="c1">% 最小值滤波</span>
+   <span class="n">X</span><span class="o">=</span><span class="nb">double</span><span class="p">(</span><span class="n">X_fuzzy</span><span class="p">);</span>     <span class="c1">% 计算时需转为double型</span>
+   <span class="n">X_min1</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Minimum'</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>        
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_min1</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}提取光照部分(最小值滤波)'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 4.抑制噪声</span>
+ <span class="c1">% 对图像全局使用Prewitt算子去噪</span>
+   <span class="n">X_prewitt</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Prewitt'</span><span class="p">,</span><span class="n">X_min1</span><span class="p">);</span>
+ <span class="c1">% 对数字‘0’进行局部去噪</span>
+   <span class="n">X_prewitt</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">)</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Prewitt'</span><span class="p">,</span><span class="n">X_min1</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">));</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_prewitt</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}抑制噪声(Prewitt算子)'</span><span class="p">);</span>
+ 
+ 
+ <span class="c1">%% 5.结果相减</span>
+ <span class="c1">% 无光照图=模糊增强图-光照图</span>
+   <span class="n">X_sub</span><span class="o">=</span><span class="n">X_fuzzy</span><span class="o">-</span><span class="nb">uint8</span><span class="p">(</span><span class="n">X_prewitt</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="n">X_sub</span><span class="p">));</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}结果相减（去除光照部分）'</span><span class="p">);</span>
+ <span class="c1">%% 6.再次增强</span>
+ <span class="c1">% 对数字‘0’进行模糊增强</span>
+   <span class="n">X_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">)</span><span class="o">=</span><span class="n">myfuzzy</span><span class="p">(</span><span class="n">X_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">));</span>
+ <span class="c1">% 对数字‘0’进行去噪</span>
+   <span class="n">X_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">)</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Medium'</span><span class="p">,</span><span class="n">X_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">),</span><span class="mi">3</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="n">X_sub</span><span class="p">));</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}再次增强'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 7.灰度拉伸</span>
+ <span class="c1">% 对去除光照后的图像进行线性灰度拉伸</span>
+   <span class="n">NX_sub</span><span class="o">=</span><span class="mi">11</span><span class="o">*</span><span class="n">X_sub</span><span class="p">;</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">));</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}灰度拉伸'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 二值化</span>
+ <span class="c1">% 对图像进行分段二值化</span>
+ <span class="c1">% 对图像分两段进行不同阈值的二值化</span>
+ <span class="c1">% 对数字‘0’进行二值化</span>
+   <span class="n">BW_left</span><span class="o">=</span><span class="n">myim2bw</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">170</span><span class="p">),</span><span class="mf">0.99</span><span class="p">);</span>
+ <span class="c1">% 对数字‘0’右边进行二值化</span>
+   <span class="n">BW_right</span><span class="o">=</span><span class="n">myim2bw</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">170</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="mf">0.6</span><span class="p">);</span>
+ <span class="c1">% 合成整幅图像</span>
+   <span class="n">BW</span><span class="o">=</span><span class="p">[</span><span class="n">BW_left</span> <span class="n">BW_right</span><span class="p">];</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">BW</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}二值化'</span><span class="p">);</span>
+ <span class="c1">% 显示原图，比较处理效果</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_src</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}原图'</span><span class="p">);</span></code></pre></figure>
+
+<h2 id="实时编辑器版">实时编辑器版</h2>
+<p><a href="https://zhangqunwei.github.io/ImageProcessC10/html/RealTime/main.html">查看源码</a></p>
+
+<figure class="highlight"><pre><code class="language-matlab" data-lang="matlab">  
+ <span class="c1">%%                        滤波3</span>
+ 
+ <span class="c1">% 作者：张群伟	南昌航空大学信息工程学院自动化系</span>
+ <span class="c1">% 日期：2017年5月10日</span>
+ <span class="c1">%</span>
+ <span class="c1">% 1.设计内容：</span>
+ <span class="c1">%         对给定的图像LBimage3对图像进行滤波，去除光照影响，再进行二值化处</span>
+ <span class="c1">%      理，得到较完整的数字和符号。</span>
+ <span class="c1">% 2.设计要求：</span>
+ <span class="c1">%         １）可用ｍａｔｌａｂ或ＶＣ＋＋等语言编程，用ｍａｔｌａｂ编程时，</span>
+ <span class="c1">%      设计中除了读写、显示、数据类型转换等函数外以外，其它主要功能函数需自</span>
+ <span class="c1">%      己编写。</span>
+ <span class="c1">%         ２）所有设计内容要在一个主程序中运行实现，分步骤实现设计要求。</span>
+ <span class="c1">%         ３）设计报告中需要分析影响结果的多种因素。</span>
+ <span class="c1">% 3.程序：</span>
+ 
+ <span class="c1">%% 3.1 读取并显示原图</span>
+   <span class="n">X_src</span><span class="o">=</span><span class="nb">imread</span><span class="p">(</span><span class="s1">'LBimage3.bmp'</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_src</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}原图'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 3.2 提取光照部分</span>
+ <span class="c1">% 最小值滤波</span>
+   <span class="n">X</span><span class="o">=</span><span class="nb">double</span><span class="p">(</span><span class="n">X_src</span><span class="p">);</span>     <span class="c1">% 计算时需转为double型</span>
+   <span class="n">X_min1</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Minimum'</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>        
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_min1</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}提取光照部分(最小值滤波)'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 3.3 抑制噪声</span>
+ <span class="c1">% Prewitt</span>
+   <span class="n">X_prewitt</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Prewitt'</span><span class="p">,</span><span class="n">X_min1</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_prewitt</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}抑制噪声(Prewitt算子)'</span><span class="p">);</span>
+ 
+ 
+ <span class="c1">%% 3.4 结果相减（去除光照部分）</span>
+ <span class="c1">% 无光照图=原图-光照图</span>
+   <span class="n">X_sub</span><span class="o">=</span><span class="n">X_src</span><span class="o">-</span><span class="nb">uint8</span><span class="p">(</span><span class="n">X_prewitt</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="n">X_sub</span><span class="p">));</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}结果相减'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 3.5 灰度拉伸</span>
+ <span class="c1">% 对去除光照后的图像进行线性灰度拉伸</span>
+   <span class="n">NX_sub</span><span class="o">=</span><span class="mi">13</span><span class="o">*</span><span class="n">X_sub</span><span class="p">;</span>
+ <span class="c1">% 对图像中的数字‘0’进行局部中值滤波</span>
+   <span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">80</span><span class="p">)</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Medium'</span><span class="p">,</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">80</span><span class="p">),</span><span class="mi">5</span><span class="p">);</span>
+   <span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">80</span><span class="p">:</span><span class="mi">180</span><span class="p">)</span><span class="o">=</span><span class="n">myfilter2</span><span class="p">(</span><span class="s1">'Medium'</span><span class="p">,</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">80</span><span class="p">:</span><span class="mi">180</span><span class="p">),</span><span class="mi">5</span><span class="p">);</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">));</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}灰度拉伸'</span><span class="p">);</span>
+ 
+ <span class="c1">%% 3.6 二值化</span>
+ <span class="c1">% 对图像进行分段二值化</span>
+ <span class="c1">% 对图像中的数字‘0’分两段进行不同阈值的二值化</span>
+   <span class="n">left1</span><span class="o">=</span><span class="n">myim2bw</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">80</span><span class="p">),</span><span class="mf">0.99</span><span class="p">);</span>
+   <span class="n">left2</span><span class="o">=</span><span class="n">myim2bw</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">80</span><span class="p">:</span><span class="mi">180</span><span class="p">),</span><span class="mf">0.3</span><span class="p">);</span>
+ <span class="c1">% 合成数字‘0’</span>
+   <span class="n">BW_left</span><span class="o">=</span><span class="p">[</span><span class="n">left1</span> <span class="n">left2</span><span class="p">];</span>
+ <span class="c1">% 对数字‘0’右边进行二值化</span>
+   <span class="n">BW_right</span><span class="o">=</span><span class="n">myim2bw</span><span class="p">(</span><span class="n">NX_sub</span><span class="p">(:,</span><span class="mi">180</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="mf">0.3</span><span class="p">);</span>
+ <span class="c1">% 合成整幅图像</span>
+   <span class="n">BW</span><span class="o">=</span><span class="p">[</span><span class="n">BW_left</span> <span class="n">BW_right</span><span class="p">];</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">BW</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}二值化'</span><span class="p">);</span>
+ <span class="c1">% 显示原图，比较处理效果</span>
+   <span class="n">imshow</span><span class="p">(</span><span class="n">X_src</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s1">'\fontsize{20}\color{red}原图'</span><span class="p">);</span></code></pre></figure>
+
+
+      </section>
+    </div>
+
+    
+  </body>
+</html>
